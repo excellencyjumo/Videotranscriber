@@ -5,7 +5,7 @@ This API allows users to upload videos, store them in disk and store the filepat
 
 ## Deployed Host
 
-**url:** `https://chrome-extension-backend-w4r6.onrender.com`
+**url:** `https://videotranscriber.onrender.com`
 ## Endpoints
 
 ### Upload a Video
