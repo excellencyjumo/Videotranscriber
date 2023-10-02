@@ -34,18 +34,25 @@ router.post('/', upload.single('video'), async (req, res) => {
     }
 
     try {
-      const transcript = await transcriber(req.file.path);
-
+      const response = await transcriber(req.file.path);
+      
+      // Parse the JSON response
+      const transcriptData = JSON.parse(response.data);
+      
+      // Access the transcribed words
+      const words = transcriptData.channels[0].alternatives[0].words;
+      
+      // Update the 'transcript' column in your database
       await supabase
         .from('Videos')
-        .update({ transcript: transcript })
+        .update({ transcript: words }) // Assuming 'transcript' is an array column
         .eq('file', req.file.originalname);
-
+      
       res.status(200).json({ success: true, message: 'Video uploaded, stored, and transcribed' });
     } catch (transcriptionError) {
       console.error('Error during transcription:', transcriptionError);
       res.status(500).json({ error: 'Failed to transcribe video' });
-    }
+    }    
   } catch (uploadError) {
     console.error('Error uploading video:', uploadError.message);
     res.status(500).json({ error: 'Failed to upload video' });
