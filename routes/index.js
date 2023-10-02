@@ -17,7 +17,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-
 router.post('/', upload.single('video'), async (req, res) => {
   try {
     if (!req.file) {
@@ -27,27 +26,24 @@ router.post('/', upload.single('video'), async (req, res) => {
     const { data: _insertData, error: insertError } = await supabase
       .from('Videos')
       .insert([{ path: req.file.path, file: req.file.originalname }]);
-
-    if (insertError) {
+        
+      if (insertError) {
       console.error('Error storing video in database:', insertError.message);
       return res.status(500).json({ error: 'Failed to store video' });
     }
 
     try {
-      const response = await transcriber(req.file.path);
+      // Transcribe the audio using OpenAI's Whisper API
+      const transcript = await transcriber(req.file.path);
       
-      // Parse the JSON response
-      const transcriptData = JSON.parse(response.data);
-      
-      // Access the transcribed words
-      const words = transcriptData.channels[0].alternatives[0].words;
-      
+      console.log("OVER HERE",transcript);
+     
       // Update the 'transcript' column in your database
       await supabase
         .from('Videos')
-        .update({ transcript: words })
+        .update({ transcript: transcript })
         .eq('file', req.file.originalname);
-      
+
       res.status(200).json({ success: true, message: 'Video uploaded, stored, and transcribed' });
     } catch (transcriptionError) {
       console.error('Error during transcription:', transcriptionError);
@@ -58,6 +54,7 @@ router.post('/', upload.single('video'), async (req, res) => {
     res.status(500).json({ error: 'Failed to upload video' });
   }
 });
+
 
 router.get('/:filename', async (req, res) => {
   try {
@@ -70,6 +67,8 @@ router.get('/:filename', async (req, res) => {
       console.error('Error getting transcript from database:', transcriptError.message);
       return res.status(500).json({ error: 'Failed to get transcript' });
     }
+    
+    console.log("DATAAAAAAAAAAA",transcriptData);
 
     const transcript = transcriptData[0].transcript;
 

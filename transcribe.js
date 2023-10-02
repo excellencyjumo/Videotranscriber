@@ -8,13 +8,21 @@ const deepgram = new Deepgram("be680759d2964168f22fbbcecdeb8cd21d76d602");
 
 // Function to run FFmpeg command synchronously
 function runFFmpegCommand(command) {
-    return execSync(`${ffmpeg} ${command}`);
+    try {
+        return execSync(`${ffmpeg} ${command}`);
+    }
+    catch (error) {
+        console.log("ERROR", error)
+        throw new Error(error);
+    }
 }
 
 async function transcribeAudio(filePath) {
+    console.log("DEEPGRAM INSTANCE", deepgram);
+
     // Extracting the audio from the video using FFmpeg
     runFFmpegCommand(`-hide_banner -y -i ${filePath} ${filePath}.mp3`);
-
+    console.log("AFTERRRRRRRR");
     // Read the extracted MP3 audio file
     const audioFile = {
         buffer: fs.readFileSync(`${filePath}.mp3`),
