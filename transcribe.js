@@ -34,7 +34,7 @@ async function transcribeAudio(filePath) {
             punctuation: true,
         });
 
-        return response.results;
+        return response.results.channels[0].alternatives[0].transcript;
     } catch (error) {
         console.error('Error during transcription:', error);
         throw new Error('Failed to transcribe audio');

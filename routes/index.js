@@ -33,7 +33,7 @@ router.post('/', upload.single('video'), async (req, res) => {
     }
 
     try {
-      // Transcribe the audio using OpenAI's Whisper API
+      // Transcribe the audio
       const transcript = await transcriber(req.file.path);
       
       console.log("OVER HERE",transcript);
