@@ -1,33 +1,19 @@
 # Video Upload and Transcription API
 
-This API allows users to upload videos, store them in disk and store the filepaths to a database, transcribe the videos, and retrieve video and transcription data.
-
+Welcome to the Video Upload and Transcription API! This API empowers users to upload videos, securely store them on disk, manage filepaths in a database, transcribe the videos, and retrieve both video and transcription data. Below, you'll find essential information to get started.
 
 ## Deployed Host
 
-**url:** `https://videotranscriber.onrender.com`
+**URL:** `https://videotranscriber.onrender.com`
+
 ## Endpoints
 
 ### Upload a Video
 
 - **Endpoint:** `POST /extension/`
 - **Description:** Upload a video file to the server.
-- **Request Body:** A video file with the name "video." and file type "type."
-- **Response:** Returns a JSON object with a success message if the upload and transcription are successful, or an error message if any step fails.
-
-### Get All Videos
-
-- **Endpoint:** `GET /extension/`
-- **Description:** Retrieve a list of all uploaded video names from the database.
-- **Response:** Returns a JSON object containing an array of video names.
-
-### Get a Specific Video
-
-- **Endpoint:** `GET /extension/:filename`
-- **Description:** Retrieve a specific video file by its filename.
-- **Parameters:**
-  - `filename` (string): The name of the video file to retrieve.
-- **Response:** Streams the requested video file to the client if found. Returns an error if the file does not exist.
+- **Request Body:** Use a `multipart/form-data` request with a file named "video."
+- **Response:** Receives a JSON object containing a success message upon a successful upload and transcription, or an error message if any step encounters an issue.
 
 ### Get Transcription of a Video
 
@@ -39,21 +25,25 @@ This API allows users to upload videos, store them in disk and store the filepat
 
 ## Usage
 
+To use this API effectively, follow these steps:
+
 1. Start the server.
-2. Use appropriate HTTP client (e.g., Postman or cURL) to interact with the API endpoints.
+2. Use Postman or any apk you prefer to interact with the API endpoints.
 
 ## Dependencies
 
-- Express.js: Web application framework.
-- Multer: Middleware for handling file uploads.
-- Supabase: Database service for storing video metadata and transcriptions.
-- Deepgram: A service or library for video transcription (not provided in this code).
+This API relies on the following technologies and libraries:
+
+- **Express.js**: A web application framework.
+- **Multer**: Middleware for handling the file uploads.
+- **Supabase**: A database service for storing video metadata and transcriptions.
+- **Deepgram**: A service or library for video transcription (not included in this code).
 
 ## Configuration
 
-Before running the API, make sure to configure your Supabase database credentials and the transcription service. You may need to set environment variables or provide configuration details as needed.
+Before running the API, you must configure your Supabase database credentials and the transcription service. Ensure you've set up the necessary environment variables and provided any required configuration details.
 
 ## Error Handling
 
-The API provides error responses with detailed error messages for various scenarios. Be sure to handle these errors in your client applications.
+This API provides comprehensive error responses, complete with detailed error messages for various scenarios. 
 
