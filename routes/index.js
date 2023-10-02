@@ -59,7 +59,7 @@ router.post('/', upload.single('video'), async (req, res) => {
   }
 });
 
-router.get('/transcript/:filename', async (req, res) => {
+router.get('/:filename', async (req, res) => {
   try {
     const { data: transcriptData, error: transcriptError } = await supabase
       .from('Videos')

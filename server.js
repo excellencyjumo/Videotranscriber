@@ -7,7 +7,7 @@ require('./utils/db.js');
 
 // Import and use routes
 const indexRoutes = require('./routes/index.js');
-app.use('/', indexRoutes);
+app.use('/transcript', indexRoutes);
 
 // Middleware for handling "PAGE UNAVAILABLE" errors
 app.use((_req, _res, next) => {
