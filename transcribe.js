@@ -18,11 +18,10 @@ function runFFmpegCommand(command) {
 }
 
 async function transcribeAudio(filePath) {
-    console.log("DEEPGRAM INSTANCE", deepgram);
 
     // Extracting the audio from the video using FFmpeg
     runFFmpegCommand(`-hide_banner -y -i ${filePath} ${filePath}.mp3`);
-    console.log("AFTERRRRRRRR");
+
     // Read the extracted MP3 audio file
     const audioFile = {
         buffer: fs.readFileSync(`${filePath}.mp3`),

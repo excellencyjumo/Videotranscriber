@@ -36,8 +36,6 @@ router.post('/', upload.single('video'), async (req, res) => {
       // Transcribe the audio
       const transcript = await transcriber(req.file.path);
       
-      console.log("OVER HERE",transcript);
-     
       // Update the 'transcript' column in your database
       await supabase
         .from('Videos')
@@ -68,8 +66,6 @@ router.get('/:filename', async (req, res) => {
       return res.status(500).json({ error: 'Failed to get transcript' });
     }
     
-    console.log("DATAAAAAAAAAAA",transcriptData);
-
     const transcript = transcriptData[0].transcript;
 
     res.status(200).json({ success: true, data: transcript });
