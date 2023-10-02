@@ -45,7 +45,7 @@ router.post('/', upload.single('video'), async (req, res) => {
       // Update the 'transcript' column in your database
       await supabase
         .from('Videos')
-        .update({ transcript: words }) // Assuming 'transcript' is an array column
+        .update({ transcript: words })
         .eq('file', req.file.originalname);
       
       res.status(200).json({ success: true, message: 'Video uploaded, stored, and transcribed' });

@@ -10,14 +10,14 @@ Welcome to the Video Upload and Transcription API! This API empowers users to up
 
 ### Upload a Video
 
-- **Endpoint:** `POST /extension/`
+- **Endpoint:** `POST /`
 - **Description:** Upload a video file to the server.
 - **Request Body:** Use a `multipart/form-data` request with a file named "video."
 - **Response:** Receives a JSON object containing a success message upon a successful upload and transcription, or an error message if any step encounters an issue.
 
 ### Get Transcription of a Video
 
-- **Endpoint:** `GET /extension/transcript/:filename`
+- **Endpoint:** `GET /transcript/:filename`
 - **Description:** Retrieve the transcription of a specific video from the Supabase database.
 - **Parameters:**
   - `filename` (string): The name of the video file to retrieve the transcription for.
