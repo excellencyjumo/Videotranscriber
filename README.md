@@ -4,7 +4,7 @@ Welcome to the Video Upload and Transcription API! This API empowers users to up
 
 ## Deployed Host
 
-**URL:** `https://videotranscriber.onrender.com`
+**URL:** `https://videotranscriber.onrender.com/transcript/2b24bee11c554adb9d6e0b48e72a65a8.mp4`
 
 ## Endpoints
 
