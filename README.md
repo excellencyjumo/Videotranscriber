@@ -47,3 +47,11 @@ Before running the API, you must configure your Supabase database credentials an
 
 This API provides comprehensive error responses, complete with detailed error messages for various scenarios. 
 
+## Video Recording for the Project
+https://www.loom.com/share/c887e58340f547dc87b43e414cdad306
+
+## Screenshots of my Project Response
+![Screenshot (435)](https://github.com/excellencyjumo/Videotranscriber/assets/57894056/cda68791-38cd-41bd-8d9b-36040ef3ccf6)
+
+![Screenshot (434)](https://github.com/excellencyjumo/Videotranscriber/assets/57894056/ef85bb93-4e21-46ae-bac0-479d2ca70033)
+
