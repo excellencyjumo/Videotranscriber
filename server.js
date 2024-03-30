@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 8000;
 
-// Import and initialize the database connection
+// Import and initialize the dB connection
 require('./utils/db.js');
 
 // Import and use routes
