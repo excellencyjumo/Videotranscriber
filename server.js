@@ -9,7 +9,7 @@ require('./utils/db.js');
 const indexRoutes = require('./routes/index.js');
 app.use('/transcript', indexRoutes);
 
-// Middleware for handling "PAGE UNAVAILABLE" errors
+// Middleware for handling "PAGE UNAVAILABLE" error
 app.use((_req, _res, next) => {
   next("PAGE UNAVAILABLE");
 });
